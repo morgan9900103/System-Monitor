@@ -219,7 +219,9 @@ string LinuxParser::Ram(int pid) {
       std::replace(line.begin(), line.end(), ':', ' ');
       std::istringstream linestream(line);
       linestream >> key >> value;
-      if (key == "VmSize") {
+      
+      // Get VmRSS stead of VmSize to get the exact physical memory being used
+      if (key == "VmRSS") {
         break;
       }
     }
