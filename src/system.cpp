@@ -66,7 +66,7 @@ vector<Process>& System::Processes() {
     long total_time = LinuxParser::ActiveJiffies(pids.at(i));
     long seconds = LinuxParser::UpTime() - LinuxParser::UpTime(pids.at(i));
     float cpu_usage = 0;
-    cpu_usage = (float)total_time / (float)seconds / 100;
+    cpu_usage = static_cast<float>(total_time) / static_cast<float>(seconds) / 100;
 
     proc.CpuUtilization(cpu_usage);
 
