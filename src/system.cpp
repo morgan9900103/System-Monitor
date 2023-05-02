@@ -38,9 +38,7 @@ vector<Process>& System::Processes() {
 
   vector<int> pids;
   for (auto it = pids_set.begin(); it != pids_set.end(); it++) {
-    //~ if (LinuxParser::Ram(*it) != "") {
-    pids.push_back(*it);
-    //~ }
+    pids.emplace_back(*it);
   }
 
   // Set Process
@@ -74,7 +72,7 @@ vector<Process>& System::Processes() {
     long ram_mb = std::stol(LinuxParser::Ram(pids.at(i))) / 1000;
     proc.Ram(std::to_string(ram_mb));
 
-    processes_.push_back(proc);
+    processes_.emplace_back(proc);
   }
 
   sort(processes_.rbegin(), processes_.rend());
