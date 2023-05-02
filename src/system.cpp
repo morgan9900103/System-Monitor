@@ -59,7 +59,7 @@ vector<Process>& System::Processes() {
     proc.Command(command);
 
     // Set Uptime
-    long int process_time = LinuxParser::UpTime(pids.at(i));
+    long int process_time = LinuxParser::UpTime() - LinuxParser::UpTime(pids.at(i));
     proc.UpTime(process_time);
 
     // Set Process Cpu Utilization
